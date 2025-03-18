@@ -1,0 +1,14 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Create Page{% endblock %}
+
+{% block content %}
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">Опубликовать</button>
+</form>
+<a href="{% url 'home_page' %}">Главная</a>
+
+{% endblock %}
