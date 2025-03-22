@@ -1,0 +1,11 @@
+<nav>
+    <ul>
+        <li><a href="{% url 'home_page' %}">Главная</a></li>
+        {% if user.is_authenticated %}
+            <li><a href="{% url 'profile_page' %}">Профиль</a></li>
+            <li><a href="{% url 'logout' %}">Выйти</a></li>
+        {% else %}
+            <li><a href="{% url 'login_page' %}">Войти</a></li>
+        {% endif %}
+    </ul>
+</nav>

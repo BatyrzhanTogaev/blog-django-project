@@ -1,6 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import PostForms
 from .models import Post
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseForbidden
 
 
 def index(request):
@@ -20,3 +22,34 @@ def created_post(request):
         form = PostForms()
 
     return render(request, 'main/create_page.html', {'form':form})
+
+@login_required
+def edit_post(request, id):
+    post = get_object_or_404(Post, id=id, author=request.user)
+
+    if request.user == post.author:
+        if request.method == 'POST':
+            form = PostForms(request.POST, instance=post)
+            if form.is_valid():
+                form.save()
+                return redirect('home_page')
+        else:
+            form = PostForms(instance=post)
+    else:
+        return HttpResponseForbidden('Вы не автор поста')
+
+    return render(request, 'main/edit_page.html', {'form':form})
+
+
+def detail_post(request, id):
+    post = get_object_or_404(Post, id=id)
+    return render(request, 'main/detail_page.html', {'post':post})
+
+
+def delete_post(request, id):
+    post = get_object_or_404(Post, id=id)
+    if request.user == post.author:
+        post.delete()
+        return redirect('home_page')
+    else:
+        return HttpResponseForbidden('Вы не автор поста')

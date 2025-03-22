@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register page</title>
+    <title>Login page</title>
 </head>
 <body>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Зарегистрироваться</button>
+        <button type="submit">Войти</button>
     </form>
-    <a href="{% url 'login_page' %}">Авторизоваться</a>
 </body>
 </html>
