@@ -1,0 +1,18 @@
+.navbar .container{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.navbar-menu {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+
+.navbar-item {
+    font-size: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 1000;
+}

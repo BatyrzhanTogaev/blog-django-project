@@ -1,21 +1,28 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Home{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'base/base.css' %}">
+    <link rel="stylesheet" href="{% static 'base/navbar/header.css' %}">
+    {% block link %}{% endblock %}
 </head>
 <body>
-    <header>
-        {% include 'base/navbar/header.html' %}
-    </header>
+    <div class="base-container">
+        <header>
+            {% include 'base/navbar/header.html' %}
+        </header>
 
-    <main>
-    {% block content %}{% endblock %}
-    </main>
-
-    <footer>
-    {% block footer%}{% endblock %}
-    </footer>
+        <main>
+        {% block content %}{% endblock %}
+        </main>
+        
+        <footer>
+        {% block footer%}{% endblock %}
+        </footer>
+    </div>
 </body>
 </html>
