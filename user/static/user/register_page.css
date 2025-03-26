@@ -1,0 +1,38 @@
+.register_page-rgt-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+}
+
+
+.your-input-class{
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+
+.register_page-rgt-btn{
+    width: 100%;
+    margin-left: 10px;
+    background-color: #86be72;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 10px;
+    box-shadow: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.register_page-rgt-btn:hover {
+    background-color: #3c7e0c;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}

@@ -1,16 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register page</title>
-</head>
-<body>
+{% extends 'base/base.html' %}
+
+{% load static %}
+{% block link %}
+<link rel="stylesheet" href="{% static 'user/register_page.css' %}">
+{% endblock %}
+
+{% block title %}Register page{% endblock %} 
+
+{% block content %}
+
+<div class="register_page-rgt-wrapper">
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Зарегистрироваться</button>
+        <button type="submit" class="register_page-rgt-btn">Зарегистрироваться</button>
     </form>
-    <a href="{% url 'login_page' %}">Авторизоваться</a>
-</body>
-</html>
+</div>
+
+{% endblock %}

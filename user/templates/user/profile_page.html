@@ -1,9 +1,28 @@
 {% extends 'base/base.html' %}
 
+{% load static %}
+{% block link %}
+<link rel="stylesheet" href="{% static 'user/profile_page.css' %}">
+{% endblock %}
+
 {% block title %}Profile page{% endblock %}
 
 {% block content %}
+<div class="profile-block">
 
-{{ user.username }}
+    <div class="profile-block-img-nick">
+        {% if user.photo %}
+            <img src="{{ user.photo.url }}" alt="photo">
+            <p>{{ user.username }}</p>
+        {% endif %}
+    </div>
 
+    <div class="profile-block-info">
+        <p>{{ user.first_name }}</p>
+        <p>{{ user.last_name }}</p>
+        <p>{{ user.email }}</p>
+        <a href="{% url 'profile_edit' %}">Редактировать</a>
+    </div>
+
+</div>
 {% endblock %}

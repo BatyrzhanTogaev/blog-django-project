@@ -13,5 +13,6 @@ urlpatterns = [
             next_page='home_page'),
         name='login_page'),
     path('logout/', views.logout_user, name='logout'),
-    path('profile/', views.profile_user, name='profile_page')
+    path('profile/', views.profile_user, name='profile_page'),
+    path('profile_edit/', views.profile_edit, name='profile_edit'),
 ]

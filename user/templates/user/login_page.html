@@ -1,15 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login page</title>
-</head>
-<body>
+{% extends 'base/base.html' %}
+
+{% load static %}
+{% block link %}
+<link rel="stylesheet" href="{% static 'user/login_page.css' %}">
+{% endblock %}
+
+
+{% block title %}Login page{% endblock %}
+
+{% block content %}
+<div class="login_page-login-wrapper">
+    <h2 class="login_page-login-title">Вход</h2>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Войти</button>
+        <div>
+            {{ form.username.label_tag }}
+            {{ form.username }}
+        </div>
+        <div>
+            {{ form.password.label_tag }}
+            {{ form.password }}
+        </div>
+        <button type="submit" class="login_page-login-btn">Войти</button>
     </form>
-</body>
-</html>
+
+    <div class="login_page-login-rgt">
+        <p class="login_page-login-rgt-text">Нет аккаунта?
+        <a href="{% url 'register_page' %}">Зарегистрироваться</a></p>
+    </div>
+</div>
+{% endblock %}
