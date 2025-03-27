@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import PostForms
+from .forms import PostForms, PostFillerForms
 from .models import Post
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden
@@ -7,7 +7,15 @@ from django.http import HttpResponseForbidden
 
 def index(request):
     posts = Post.objects.all()
-    return render(request, 'main/home_page.html', {'posts': posts})
+    form = PostFillerForms(request.GET)
+
+    if form.is_valid() and form.cleaned_data['category']:
+        posts = posts.filter(category=form.cleaned_data['category'])
+        
+    print(form.errors)  # Проверим, нет ли ошибок
+    print(form.cleaned_data)  # Какие данные приходят?
+
+    return render(request, 'main/home_page.html', {'posts': posts, 'form':form})
 
 
 def created_post(request):

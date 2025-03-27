@@ -12,7 +12,14 @@
 {% block content %}
 <div class="home_page-content-wrapper">
     <div class="home_page-sidebar">
+        <div class="home_page-created-btn">
+            <a href="{% url 'create_page' %}">Создать пост</a>
+         </div>
         <p>Фильтр по категориям</p>
+        <form method="GET">
+            {{ form.category }}
+            <button type="submit">Фильтровать</button>
+        </form>        
     </div>
     <div class="home_page-posts-grid">
         {% for post in posts %}

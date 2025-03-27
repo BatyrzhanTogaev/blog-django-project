@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_list_or_404
 from .forms import CustomUserRegisterForm
 from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
-from .forms import CustomUserform
+from .forms import CustomUserform, CustomUserEditForm
 
 
 def register_user(request):
@@ -25,12 +25,12 @@ def profile_user(request):
 @login_required
 def profile_edit(request):
     if request.method == 'POST':
-        form = CustomUserform(request.POST, request.FILES, instance=request.user)
+        form = CustomUserEditForm(request.POST, request.FILES, instance=request.user)
         if form.is_valid():
             form.save()
             return redirect('profile_page')
     else:
-        form = CustomUserform(instance=request.user)
+        form = CustomUserEditForm(instance=request.user)
 
     return render(request, 'user/profile_edit.html', {'form':form})
 
